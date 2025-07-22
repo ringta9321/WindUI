@@ -111,15 +111,8 @@ function Creator.SafeCallback(Function, ...)
 	local Success, Event = pcall(Function, ...)
 	if not Success then
 		local _, i = Event:find(":%d+: ")
-
-
-	    warn("[ WindUI: DEBUG Mode ] " .. Event)
 	    
-		return Creator.WindUI:Notify({
-			Title = "DEBUG Mode: Error",
-			Content = not i and Event or Event:sub(i + 1),
-			Duration = 8,
-		})
+		return
 	end
 end
 
