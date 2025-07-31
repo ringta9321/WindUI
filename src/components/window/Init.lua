@@ -16,17 +16,6 @@ local ConfigManager = require("../../config/Init")
 
 local Notified = false
 
-local function GenerateRandomName()
-    local Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-    local Length = math.random(1, 9)
-    local Result = ""
-    for i = 1, Length do
-        local RandomIndex = math.random(1, #Chars)
-        Result = Result .. string.sub(Chars, RandomIndex, RandomIndex)
-    end
-    return Result
-end
-
 return function(Config)
     local Window = {
         Title = Config.Title or "UI Library",
@@ -1208,7 +1197,7 @@ return function(Config)
                     isResizing = false
                     FullScreenIcon.Active = false
                     Tween(FullScreenIcon, 0.2, {ImageTransparency = 1}):Play()
-                    Tween(FullScreenIcon.ImageLabel, 0.17, {ImageTransparency = 1}):Play()
+                    pcall(Tween(FullScreenIcon.ImageLabel, 0.17, {ImageTransparency = 1}):Play())
                     Tween(ResizeHandle.ImageLabel, 0.17, {ImageTransparency = .8}):Play()
                 end
             end)
