@@ -4,10 +4,9 @@ Credits: dawid
 
 ]]
 
-local RunService = game:GetService("RunService")
-local RenderStepped = RunService.Heartbeat
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
+local RunService = cloneref and cloneref(game:GetService("RunService")) or game:GetService("RunService")
+local UserInputService = cloneref and cloneref(game:GetService("UserInputService")) or game:GetService("UserInputService")
+local TweenService = cloneref and cloneref(game:GetService("TweenService")) or game:GetService("TweenService")
 
 local Icons = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Footagesus/Icons/main/Main.lua"))()
 Icons.SetIconsType("lucide")

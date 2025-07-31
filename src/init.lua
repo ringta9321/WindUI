@@ -23,26 +23,41 @@ local Tween = Creator.Tween
 
 Creator.Themes = Themes
 
-local LocalPlayer = game:GetService("Players") and game:GetService("Players").LocalPlayer or nil
+local Players = cloneref and cloneref(game:GetService("Players")) or game:GetService("Players")
+local LocalPlayer = Players and Players.LocalPlayer or nil
 WindUI.Themes = Themes
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
 
-local GUIParent = gethui and gethui() or game.CoreGui
+local CoreGui = cloneref and cloneref(game:GetService("CoreGui")) or game:GetService("CoreGui")
+local GUIParent = gethui and gethui() or CoreGui
 --local GUIParent = game.CoreGui
 
+local function GenerateRandomName()
+    local Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    local Length = math.random(1, 9)
+    local Result = ""
+    for i = 1, Length do
+        local RandomIndex = math.random(1, #Chars)
+        Result = Result .. string.sub(Chars, RandomIndex, RandomIndex)
+    end
+    return Result
+end
+
+local WindowFolder = New("Folder", {
+    Name = GenerateRandomName()
+})
+
 WindUI.ScreenGui = New("ScreenGui", {
-    Name = "WindUI",
+    Name = GenerateRandomName(),
     Parent = GUIParent,
     IgnoreGuiInset = true,
     ScreenInsets = "None",
 }, {
     New("UIScale", {
-        Scale = WindUI.Scale,
+        Scale = WindUI.UIScale,
     }),
-    New("Folder", {
-        Name = "Window"
-    }),
+    WindowFolder, 
     -- New("Folder", {
     --     Name = "Notifications"
     -- }),
@@ -50,23 +65,23 @@ WindUI.ScreenGui = New("ScreenGui", {
     --     Name = "Dropdowns"
     -- }),
     New("Folder", {
-        Name = "KeySystem"
+        Name = GenerateRandomName()
     }),
     New("Folder", {
-        Name = "Popups"
+        Name = GenerateRandomName()
     }),
     New("Folder", {
-        Name = "ToolTips"
+        Name = GenerateRandomName()
     })
 })
 
 WindUI.NotificationGui = New("ScreenGui", {
-    Name = "WindUI/Notifications",
+    Name = GenerateRandomName(),
     Parent = GUIParent,
     IgnoreGuiInset = true,
 })
 WindUI.DropdownGui = New("ScreenGui", {
-    Name = "WindUI/Dropdowns",
+    Name = GenerateRandomName(),
     Parent = GUIParent,
     IgnoreGuiInset = true,
 })
@@ -76,7 +91,7 @@ ProtectGui(WindUI.DropdownGui)
 
 Creator.Init(WindUI)
 
-math.clamp(WindUI.TransparencyValue, 0, 0.4)
+WindUI.TransparencyValue = math.clamp(WindUI.TransparencyValue, 0, 0.4)
 
 local Notify = require("./components/Notification")
 local Holder = Notify.Init(WindUI.NotificationGui)
@@ -147,7 +162,8 @@ function WindUI:CreateWindow(Config)
     end
     
     Config.WindUI = WindUI
-    Config.Parent = WindUI.ScreenGui.Window
+    Config.Parent = WindowFolder
+    Config.RandomFolder3 = WindUI.RandomFolder3
     
     if WindUI.Window then
         warn("You cannot create more than one window")

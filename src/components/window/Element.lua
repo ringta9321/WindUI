@@ -3,7 +3,7 @@ local New = Creator.New
 local NewRoundFrame = Creator.NewRoundFrame
 local Tween = Creator.Tween
 
-local UserInputService = game:GetService("UserInputService")
+local UserInputService = cloneref and cloneref(game:GetService("UserInputService")) or game:GetService("UserInputService")
 
 
 return function(Config)

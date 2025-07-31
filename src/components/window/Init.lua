@@ -1,8 +1,7 @@
+local UserInputService = cloneref and cloneref(game:GetService("UserInputService")) or game:GetService("UserInputService")
+local RunService = cloneref and cloneref(game:GetService("RunService")) or game:GetService("RunService")
 
-local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-
-local CurrentCamera = workspace.CurrentCamera
+local CurrentCamera = cloneref and cloneref(workspace.CurrentCamera) or workspace.CurrentCamera
 
 local Creator = require("../../modules/Creator")
 local New = Creator.New
@@ -16,6 +15,17 @@ local CreateScrollSlider = require("../ui/ScrollSlider").New
 local ConfigManager = require("../../config/Init")
 
 local Notified = false
+
+local function GenerateRandomName()
+    local Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    local Length = math.random(1, 9)
+    local Result = ""
+    for i = 1, Length do
+        local RandomIndex = math.random(1, #Chars)
+        Result = Result .. string.sub(Chars, RandomIndex, RandomIndex)
+    end
+    return Result
+end
 
 return function(Config)
     local Window = {
@@ -257,7 +267,7 @@ return function(Config)
     
     local UserIcon
     if Window.User.Enabled then
-        local ImageId, _ = game.Players:GetUserThumbnailAsync(
+        local ImageId, _ = (cloneref and cloneref(game:GetService("Players")) or game:GetService("Players")):GetUserThumbnailAsync(
             Window.User.Anonymous and 1 or game.Players.LocalPlayer.UserId, 
             Enum.ThumbnailType.HeadShot, 
             Enum.ThumbnailSize.Size420x420
@@ -754,7 +764,7 @@ return function(Config)
             end
         end)
         
-        local NotifiedText = IsPC and "Press " .. Window.ToggleKey.Name .. " to open the Window" or "Click the Button to open the Window"
+        local NotifiedText = IsPC and "Press " .. Window.ToggleKey.Name .. " to re-open the window." or "Click the button to re-open the window."
         
         if not Window.IsOpenButtonEnabled then
             Notified = true
@@ -763,7 +773,7 @@ return function(Config)
             Notified = not Notified
             Config.WindUI:Notify({
                 Title = "Minimize",
-                Content = "You've closed the Window. " .. NotifiedText,
+                Content = NotifiedText,
                 Icon = "eye-off",
                 Duration = 5,
             })
@@ -931,7 +941,7 @@ return function(Config)
     
     local TabModuleMain = require("./Tab")
     local SectionModule = require("./Section")
-    local TabModule = TabModuleMain.Init(Window, Config.WindUI, Config.Parent.Parent.ToolTips)
+    local TabModule = TabModuleMain.Init(Window, Config.WindUI, Config.RandomFolder3)
     TabModule:OnChange(function(t) Window.CurrentTab = t end)
     
     Window.TabModule = TabModuleMain
@@ -1164,7 +1174,7 @@ return function(Config)
         Window:Dialog({
             --Icon = "trash-2",
             Title = "Close Window",
-            Content = "Do you want to close this window? You will not be able to open it again.",
+            Content = "Are you sure?",
             Buttons = {
                 {
                     Title = "Cancel",

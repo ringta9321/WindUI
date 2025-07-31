@@ -1,5 +1,5 @@
 -- credits: dawid
-local HttpService = game:GetService("HttpService")
+local HttpService = cloneref and cloneref(game:GetService("HttpService")) or game:GetService("HttpService")
 
 local ConfigManager
 ConfigManager = {
