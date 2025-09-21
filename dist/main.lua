@@ -7777,23 +7777,11 @@ end
 
 local y=u(t)
 
-aa.Transparent=t.Transparent
-aa.Window=y
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-return y
+     
+aa.Window = y
+    aa.Transparent = t.Transparent
 end
 
 return aa
