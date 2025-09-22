@@ -29,7 +29,6 @@ local e=loadstring(game:HttpGetAsync"https://raw.githubusercontent.com/Footagesu
 e.SetIconsType"lucide"
 
 local f={
-Font="rbxassetid://12187365364",
 CanDraggable=true,
 Theme=nil,
 Themes=nil,
@@ -234,11 +233,6 @@ function f.NewRoundFrame(g,h,i,j,k)
 
 
 local l=f.New(k and"ImageButton"or"ImageLabel",{
-Image=h=="Squircle"and"rbxassetid://80999662900595"
-or h=="SquircleOutline"and"rbxassetid://117788349049947"
-or h=="SquircleOutline2"and"rbxassetid://117817408534198"
-or h=="Shadow-sm"and"rbxassetid://84825982946844"
-or h=="Squircle-TL-TR"and"rbxassetid://73569156276236",
 ScaleType="Slice",
 SliceCenter=h~="Shadow-sm"and Rect.new(256
 ,256
@@ -393,7 +387,7 @@ p.ImageLabel.Image=getcustomasset(q)
 end)
 end)
 if not r then
-warn("[ WindUI.Creator ]  '"..identifyexecutor().."' doesnt support the URL Images. Error: "..s)
+warn("e"..s)
 
 p:Destroy()
 end
@@ -428,11 +422,9 @@ Background="#e4e4e7",
 Button="#18181b",
 Icon="#52525b",
 },
-
 Rose={
 Name="Rose",
-Accent="#e11d48",
-Dialog="#881337",
+Accent="#f43f5e",
 Outline="#ffe4e6",
 Text="#ffe4e6",
 Placeholder="#fda4af",
@@ -440,54 +432,39 @@ Background="#881337",
 Button="#e11d48",
 Icon="#fecdd3",
 },
-Sunset={
-Name="Sunset",
-Accent="#f97316",
-Dialog="#7c2d12",
-Outline="#fed7aa",
-Text="#fed7aa",
-Placeholder="#fdba74",
-Background="#7c2d12",
-Button="#f97316",
-Icon="#fed7aa",
+Plant={
+Name="Plant",
+Accent="#22c55e",
+Outline="#dcfce7",
+Text="#dcfce7",
+Placeholder="#bbf7d0",
+Background="#14532d",
+Button="#22c55e",
+Icon="#86efac",
 },
-Amber={
-Name="Amber",
-Accent="#f59e0b",
-Dialog="#78350f",
-Outline="#fef3c7",
-Text="#fef3c7",
-Placeholder="#fcd34d",
-Background="#78350f",
-Button="#f59e0b",
-Icon="#fde68a",
+Red={
+Name="Red",
+Accent="#ef4444",
+Outline="#fee2e2",
+Text="#ffe4e6",
+Placeholder="#fca5a5",
+Background="#7f1d1d",
+Button="#ef4444",
+Icon="#fecaca",
 },
-Lime={
-Name="Lime",
-Accent="#84cc16",
-Dialog="#365314",
-Outline="#ecfccb",
-Text="#ecfccb",
-Placeholder="#bef264",
-Background="#365314",
-Button="#84cc16",
-Icon="#d9f99d",
-},
-Forest={
-Name="Forest",
-Accent="#10b981",
-Dialog="#064e3b",
-Outline="#d1fae5",
-Text="#d1fae5",
-Placeholder="#6ee7b7",
-Background="#064e3b",
-Button="#10b981",
-Icon="#a7f3d0",
+Indigo={
+Name="Indigo",
+Accent="#6366f1",
+Outline="#e0e7ff",
+Text="#e0e7ff",
+Placeholder="#a5b4fc",
+Background="#312e81",
+Button="#6366f1",
+Icon="#c7d2fe",
 },
 Sky={
 Name="Sky",
 Accent="#0ea5e9",
-Dialog="#075985",
 Outline="#e0f2fe",
 Text="#e0f2fe",
 Placeholder="#7dd3fc",
@@ -495,27 +472,35 @@ Background="#075985",
 Button="#0ea5e9",
 Icon="#bae6fd",
 },
-Midnight={
-Name="Midnight",
-Accent="#3b82f6",
-Dialog="#1e3a8a",
-Outline="#dbeafe",
-Text="#dbeafe",
-Placeholder="#93c5fd",
-Background="#1e3a8a",
-Button="#3b82f6",
-Icon="#bfdbfe",
-},
-Nebula={
-Name="Nebula",
+Violet={
+Name="Violet",
 Accent="#8b5cf6",
-Dialog="#4c1d95",
 Outline="#ede9fe",
 Text="#ede9fe",
 Placeholder="#c4b5fd",
 Background="#4c1d95",
 Button="#8b5cf6",
 Icon="#ddd6fe",
+},
+Amber={
+Name="Amber",
+Accent="#f59e0b",
+Outline="#fef3c7",
+Text="#fef3c7",
+Placeholder="#fcd34d",
+Background="#78350f",
+Button="#f59e0b",
+Icon="#fde68a",
+},
+Emerald={
+Name="Emerald",
+Accent="#10b981",
+Outline="#d1fae5",
+Text="#d1fae5",
+Placeholder="#6ee7b7",
+Background="#064e3b",
+Button="#10b981",
+Icon="#a7f3d0",
 },
 }end function a.c()
 local c={}
@@ -2353,7 +2338,6 @@ e("ImageLabel",{
 Size=UDim2.new(0,i.ToolTipSize,0,i.ToolTipSize/2),
 BackgroundTransparency=1,
 Rotation=180,
-Image="rbxassetid://89524607682719",
 ThemeTag={
 ImageColor3="Accent",
 },
@@ -2363,7 +2347,6 @@ Size=UDim2.new(0,i.ToolTipSize,0,i.ToolTipSize/2),
 BackgroundTransparency=1,
 LayoutOrder=99,
 ImageTransparency=.9,
-Image="rbxassetid://89524607682719",
 ThemeTag={
 ImageColor3="Text",
 },
@@ -4213,7 +4196,6 @@ Visible=k and true or false
 g("ImageLabel",{
 Size=UDim2.new(0,18,0,18),
 BackgroundTransparency=1,
-Image="rbxassetid://132464694294269",
 
 
 
@@ -4420,13 +4402,11 @@ Size=UDim2.new(0,18,0,18),
 ScaleType=Enum.ScaleType.Fit,
 AnchorPoint=Vector2.new(0.5,0.5),
 BackgroundTransparency=1,
-Image="http://www.roblox.com/asset/?id=4805639000",
 })
 
 u.UIElements.SatVibMap=e("ImageLabel",{
 Size=UDim2.fromOffset(160,158),
 Position=UDim2.fromOffset(0,40),
-Image="rbxassetid://4155801252",
 BackgroundColor3=Color3.fromHSV(x,1,1),
 BackgroundTransparency=0,
 Parent=w.UIElements.Main,
@@ -4719,7 +4699,6 @@ e("UICorner",{
 CornerRadius=UDim.new(1,0),
 }),
 e("ImageLabel",{
-Image="rbxassetid://14204231522",
 ImageTransparency=0.45,
 ScaleType=Enum.ScaleType.Tile,
 TileSize=UDim2.fromOffset(40,40),
@@ -6282,17 +6261,6 @@ local o=a.load'k'
 
 local p=false
 
-
-
-
-
-
-
-
-
-
-
-
 return function(q)
 local r={
 Title=q.Title or"UI Library",
@@ -6367,7 +6335,6 @@ Active=true
 j("ImageLabel",{
 Size=UDim2.new(0,96,0,96),
 BackgroundTransparency=1,
-Image="rbxassetid://120997033468887",
 Position=UDim2.new(0.5,-16,0.5,-16),
 AnchorPoint=Vector2.new(0.5,0.5),
 ImageTransparency=1,
@@ -6501,7 +6468,6 @@ PaddingBottom=UDim.new(0,r.UIPadding/2),
 })
 
 local w=j("ImageLabel",{
-Image="rbxassetid://8992230677",
 ImageColor3=Color3.new(0,0,0),
 ImageTransparency=1,
 Size=UDim2.new(1,120,1,116),
@@ -7777,11 +7743,23 @@ end
 
 local y=u(t)
 
+aa.Transparent=t.Transparent
+aa.Window=y
 
 
-     
-aa.Window = y
-    aa.Transparent = t.Transparent
+
+
+
+
+
+
+
+
+
+
+
+
+return y
 end
 
 return aa
